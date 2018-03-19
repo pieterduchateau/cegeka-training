@@ -41,7 +41,7 @@
 **/Entity/*~
 
 # Custom training part
+/.idea/
 /.vagrant/
 /vendor/
 /nbproject/
-/.idea/
