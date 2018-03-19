@@ -1,0 +1,22 @@
+ip: 192.168.230.50
+memory: 2048
+cpus: 2
+provider: virtualbox
+authorize: C:\Users\pieterdu\Documents\keypair\pubKey.pub
+#keys:
+#    - ~/.ssh/id_rsa
+folders:
+    -
+        map: C:\Users\pieterdu\Documents\training\Cegeka-training\cegeka-training
+        to: /home/vagrant/training
+        type: "nfs"
+sites:
+    -
+        map: pieter.travel
+        to: /home/vagrant/training/public
+        type: symfony4
+        php: "7.1"
+databases:
+    - travel
+name: training
+hostname: training
