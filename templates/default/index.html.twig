@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="container">
+    <h1>Flight Controller v1.0 Pietro! ✅</h1>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    All the information is listed below :
+    <hr>
+
+    <h1>Hotels</h1>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Agency</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Start date</th>
+            <th scope="col">End date</th>
+            <th scope="col">Stars</th>
+            <th scope="col">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for hotel in hotels %}
+                <tr>
+                    <td>{{ hotel.agency }}</td>
+                    <td>{{ hotel.name }}</td>
+                    <td>{{ hotel.location }}</td>
+                    <td>{{ hotel.start|date("m/d/Y") }}</td>
+                    <td>{{ hotel.end|date("m/d/Y") }}</td>
+                    <td>{{ hotel.stars }}</td>
+                    <td>{{ hotel.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+
+    <h1>Flights</h1>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Agency</th>
+            <th scope="col">Airline</th>
+            <th scope="col">Start date</th>
+            <th scope="col">End date</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Time of day</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Price</th>
+            <th scope="col">Owned</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for flight in flights %}
+            <tr>
+                <td>{{ flight.agency }}</td>
+                <td>{{ flight.airline }}</td>
+                <td>{{ flight.start|date("m/d/Y") }}</td>
+                <td>{{ flight.end|date("m/d/Y") }}</td>
+                <td>{{ flight.duration }}</td>
+                <td>{{ flight.timeofday|date("H:m:s") }}</td>
+                <td>{{ flight.flightfrom }}</td>
+                <td>{{ flight.flightto }}</td>
+                <td>{{ flight.price }}</td>
+                <td>{{ flight.owned }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

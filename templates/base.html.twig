@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+        <style>
+            body {
+                padding-top: 55px;
+            }
+        </style>
+    {% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Travel agency</a>
+        </div>
+        {% if is_granted('ROLE_API') %}<li><a href="{{ path('api_entrypoint') }}">Api</a></li>{% endif %}
+        {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('admin') }}">Admin</a></li>{% endif %}
+        {% if app.user %}
+            <li><a href="{{ path('fos_user_profile_show') }}">Logged in as {{ app.user }}</a></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+        {% else %}
+            <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+            <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>
